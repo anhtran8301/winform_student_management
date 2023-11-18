@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using FireSharp.Config;
@@ -23,9 +18,8 @@ namespace ManagementStudentFirebase
 
         #region Declare
 
-        DataTable dt = new DataTable();
-
-        IFirebaseConfig config = new FirebaseConfig
+        private readonly DataTable dt = new DataTable();
+        private readonly IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "J9ZPoQ1mIsRoyvPNfeoZHYruDCtqoJ5cLXP340fd",
             BasePath = "https://quanlysinhviendb-d59d5-default-rtdb.asia-southeast1.firebasedatabase.app/"
@@ -58,10 +52,11 @@ namespace ManagementStudentFirebase
             dt.Rows.Clear();
             int i = 0;
             //lấy tổng học sinh ở trên Firebase mục "SiSo"
-            FirebaseResponse resp1 = await client.GetTaskAsync("SiSo/");
+            FirebaseResponse resp1 = await client.GetAsync("SiSo/");
             Counter obj1 = resp1.ResultAs<Counter>();
 
             int cnt = Convert.ToInt32(obj1.cnt);
+            ErrorProvider errorProvider = new ErrorProvider();
 
             //Sử dụng vòng lặp while lặp đến tổng học sinh đang có
             while (true)
@@ -74,7 +69,7 @@ namespace ManagementStudentFirebase
                 try
                 {
                     //kết nối tới firebase và lấy danh sách về
-                    FirebaseResponse resp2 = await client.GetTaskAsync("QuanLyHocSinh/" + i);
+                    FirebaseResponse resp2 = await client.GetAsync("QuanLyHocSinh/" + i);
                     Data obj2 = resp2.ResultAs<Data>();
 
                     DataRow row = dt.NewRow();
@@ -89,11 +84,12 @@ namespace ManagementStudentFirebase
                     dt.Rows.Add(row);
                     //hiển thị tổng học sinh
                     Total();
+                    errorProvider.SetError(dtgDSHS, "");
                 }
-                catch
+                catch(Exception e)
                 {
-
-                }
+                    errorProvider.SetError(dtgDSHS, $"Có lỗi xảy ra: {e.Message}");
+ }
             }
         }
 
@@ -133,54 +129,65 @@ namespace ManagementStudentFirebase
 
         private async void AddStudent()
         {
-            //kiểm tra thông tin của học sinh rồi mới thực hiện thêm mới
-            if (txtHoTen.Text == "")
+            string TxthotenpValueFromAddStudent = string.Empty;
+            string TxtDiaChiPValueFromAddStudent = string.Empty;
+            string TxtLopPValueFromAddStudent = string.Empty;
+            string TxtMaHSPValueFromAddStudent = string.Empty;
+            string TxtDateValueFromAddStudent = string.Empty;
+            string TxtSexValueFromAddStudent = string.Empty;
+
+            using (AddStudent add = new AddStudent())
             {
-                MessageBox.Show("Vui lòng nhập họ và tên học sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtHoTen.Focus();
-            }
-            else if (txtLop.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập lớp cho học sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtLop.Focus();
-            }
-            else if (txtDiaChi.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập địa chỉ của học sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtDiaChi.Focus();
-            }
-            else
-            {
-                //lấy số lượng tổng học sinh
-                FirebaseResponse resp = await client.GetTaskAsync("SiSo");
-                Counter get = resp.ResultAs<Counter>();
-                //khởi tạo một object thuộc Class Data
-                var data = new Data
+                if (add.ShowDialog() == DialogResult.OK) // Hiển thị form pop-up và chờ người dùng nhập thông tin
                 {
-                    MSHS = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                    HoTen = txtHoTen.Text,
-                    Lop = txtLop.Text,
-                    NgaySinh = dtpickerNgaySinh.Text.ToString(),
-                    DiaChi = txtDiaChi.Text,
-                    GioiTinh = cboGioiTinh.Text
-                };
+                    // Lấy thông tin từ pop-up form sau khi người dùng nhập đủ
+                    TxthotenpValueFromAddStudent = add.TxtHotenPValue;
+                    TxtDateValueFromAddStudent = add.TxtDateValue;
+                    TxtDiaChiPValueFromAddStudent = add.TxtDiaChiPValue;
+                    TxtMaHSPValueFromAddStudent = add.TxtMaHSPValue;
+                    TxtLopPValueFromAddStudent = add.TxtLopPValue;
+                    TxtSexValueFromAddStudent = add.TxtSexValue;
 
-                //Đẩy dữ liệu lên Firebase
-                SetResponse response = await client.SetTaskAsync("QuanLyHocSinh/" + data.MSHS, data);
-                Data result = response.ResultAs<Data>();
+                    try
+                    {
+                        //lấy số lượng tổng học sinh
+                        FirebaseResponse resp = await client.GetAsync("SiSo");
+                        Counter get = resp.ResultAs<Counter>();
 
-                MessageBox.Show("Đã thêm mới thành công học sinh có mã " + result.MSHS);
-                Reset();
+                        //khởi tạo một object thuộc Class Data
+                        var data = new Data
+                        {
+                            MSHS = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                            HoTen = TxthotenpValueFromAddStudent,
+                            Lop = TxtLopPValueFromAddStudent,
+                            NgaySinh = TxtDateValueFromAddStudent.ToString(),
+                            DiaChi = TxtDiaChiPValueFromAddStudent,
+                            GioiTinh = TxtSexValueFromAddStudent
+                        };
 
-                var obj = new Counter
-                {
-                    cnt = data.MSHS
-                };
+                        //Đẩy dữ liệu lên Firebase
+                        SetResponse response = await client.SetAsync("QuanLyHocSinh/" + data.MSHS, data);
+                        Data result = response.ResultAs<Data>();
 
-                SetResponse response1 = await client.SetTaskAsync("SiSo", obj);
-                export();
+                        MessageBox.Show("Đã thêm mới thành công học sinh có mã " + result.MSHS);
+                        Reset();
+
+                        var obj = new Counter
+                        {
+                            cnt = data.MSHS
+                        };
+
+                        SetResponse response1 = await client.SetAsync("SiSo", obj);
+                        export();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
+                }
             }
         }
+
 
         private async void EditStudent()
         {
@@ -190,7 +197,7 @@ namespace ManagementStudentFirebase
             }
             else
             {
-                FirebaseResponse resp1 = await client.GetTaskAsync("SiSo");
+                FirebaseResponse resp1 = await client.GetAsync("SiSo");
                 Counter obj1 = resp1.ResultAs<Counter>();
 
                 int cnt = Convert.ToInt32(obj1.cnt);
@@ -212,7 +219,7 @@ namespace ManagementStudentFirebase
                         GioiTinh = cboGioiTinh.Text
                     };
 
-                    FirebaseResponse response = await client.UpdateTaskAsync("QuanLyHocSinh/" + txtMaHS.Text, data);
+                    FirebaseResponse response = await client.UpdateAsync("QuanLyHocSinh/" + txtMaHS.Text, data);
                     Data result = response.ResultAs<Data>();
                     MessageBox.Show("Sửa thành công học sinh có mã: " + result.MSHS, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Reset();
@@ -226,10 +233,10 @@ namespace ManagementStudentFirebase
             DialogResult dg = MessageBox.Show("Bạn có chắc chắn xóa hết ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dg == DialogResult.Yes)
             {
-                FirebaseResponse response = await client.DeleteTaskAsync("QuanLyHocSinh");
+                FirebaseResponse response = await client.DeleteAsync("QuanLyHocSinh");
                 MessageBox.Show("Đã xóa hết học sinh thành công !!! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                FirebaseResponse resp = await client.GetTaskAsync("SiSo");
+                FirebaseResponse resp = await client.GetAsync("SiSo");
                 Counter get = resp.ResultAs<Counter>();
 
                 var obj = new Counter
@@ -237,7 +244,7 @@ namespace ManagementStudentFirebase
                     cnt = "0"
                 };
 
-                SetResponse response1 = await client.SetTaskAsync("SiSo", obj);
+                SetResponse response1 = await client.SetAsync("SiSo", obj);
                 Reset();
                 export();
                 txtTongHS.Text = "0";
@@ -301,14 +308,18 @@ namespace ManagementStudentFirebase
             export();
             BindingListStudent();
         }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dg = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dg == DialogResult.Cancel)
+            {
+                e.Cancel = true; // Hủy sự kiện đóng form
+            }
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dg = MessageBox.Show("Bạn có chắc chắn muốn thoát ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if(dg == DialogResult.OK)
-            {
-                Application.Exit();
-            }
+           
         }
 
         private void btnLayThongTin_Click(object sender, EventArgs e)
@@ -354,6 +365,11 @@ namespace ManagementStudentFirebase
         #endregion
 
         private void dtgDSHS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtLop_TextChanged(object sender, EventArgs e)
         {
 
         }

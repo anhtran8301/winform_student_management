@@ -10,6 +10,7 @@ namespace ManagementStudentFirebase
     {
         public string MSHS { get; set; }
         public string HoTen { get; set; }
+        public string Khoa { get; set; }
         public string Lop { get; set; }
         public string NgaySinh { get; set; }
         public string DiaChi { get; set; }

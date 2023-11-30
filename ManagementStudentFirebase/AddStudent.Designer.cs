@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboGioiTinhp = new System.Windows.Forms.ComboBox();
             this.dtpickerNgaySinhp = new System.Windows.Forms.DateTimePicker();
@@ -42,11 +43,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.AddNew = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.txtKhoap = new System.Windows.Forms.TextBox();
+            this.Khoa = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Khoa);
+            this.groupBox1.Controls.Add(this.txtKhoap);
             this.groupBox1.Controls.Add(this.cboGioiTinhp);
             this.groupBox1.Controls.Add(this.dtpickerNgaySinhp);
             this.groupBox1.Controls.Add(this.txtDiaChip);
@@ -61,11 +69,11 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Blue;
-            this.groupBox1.Location = new System.Drawing.Point(59, 14);
+            this.groupBox1.Location = new System.Drawing.Point(58, 14);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(887, 519);
+            this.groupBox1.Size = new System.Drawing.Size(886, 518);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thêm sinh viên";
@@ -81,6 +89,7 @@
             this.cboGioiTinhp.Name = "cboGioiTinhp";
             this.cboGioiTinhp.Size = new System.Drawing.Size(240, 33);
             this.cboGioiTinhp.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.cboGioiTinhp, "Giới tính của học sinh mới");
             // 
             // dtpickerNgaySinhp
             // 
@@ -91,6 +100,7 @@
             this.dtpickerNgaySinhp.Name = "dtpickerNgaySinhp";
             this.dtpickerNgaySinhp.Size = new System.Drawing.Size(240, 30);
             this.dtpickerNgaySinhp.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.dtpickerNgaySinhp, "Chọn ngày tháng năm sinh");
             // 
             // txtDiaChip
             // 
@@ -100,6 +110,7 @@
             this.txtDiaChip.Name = "txtDiaChip";
             this.txtDiaChip.Size = new System.Drawing.Size(240, 30);
             this.txtDiaChip.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.txtDiaChip, "Địa chỉ của học sinh mới");
             // 
             // txtLopp
             // 
@@ -109,15 +120,17 @@
             this.txtLopp.Name = "txtLopp";
             this.txtLopp.Size = new System.Drawing.Size(240, 30);
             this.txtLopp.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.txtLopp, "Nhập lớp của học sinh mới");
             // 
             // txtHoTenp
             // 
             this.txtHoTenp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTenp.Location = new System.Drawing.Point(190, 146);
+            this.txtHoTenp.Location = new System.Drawing.Point(190, 114);
             this.txtHoTenp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHoTenp.Name = "txtHoTenp";
             this.txtHoTenp.Size = new System.Drawing.Size(240, 30);
             this.txtHoTenp.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtHoTenp, "Nhập họ và tên học sinh mới");
             // 
             // txtMaHSp
             // 
@@ -128,6 +141,7 @@
             this.txtMaHSp.ReadOnly = true;
             this.txtMaHSp.Size = new System.Drawing.Size(240, 30);
             this.txtMaHSp.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtMaHSp, "Nhập mã học sinh mới");
             // 
             // label7
             // 
@@ -189,7 +203,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 154);
+            this.label2.Location = new System.Drawing.Point(36, 122);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 25);
@@ -200,19 +214,49 @@
             // 
             this.AddNew.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.AddNew.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.AddNew.Location = new System.Drawing.Point(807, 541);
+            this.AddNew.Location = new System.Drawing.Point(549, 540);
             this.AddNew.Name = "AddNew";
-            this.AddNew.Size = new System.Drawing.Size(175, 52);
+            this.AddNew.Size = new System.Drawing.Size(176, 52);
             this.AddNew.TabIndex = 8;
-            this.AddNew.Text = "Thêm mới";
+            this.AddNew.Text = "THÊM MỚI";
+            this.toolTip1.SetToolTip(this.AddNew, "Thêm thông tin học sinh mới");
             this.AddNew.UseVisualStyleBackColor = false;
             this.AddNew.Click += new System.EventHandler(this.AddNew_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.time1_tick);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(759, 542);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(186, 45);
+            this.progressBar1.TabIndex = 9;
+            // 
+            // txtKhoap
+            // 
+            this.txtKhoap.Location = new System.Drawing.Point(190, 169);
+            this.txtKhoap.Name = "txtKhoap";
+            this.txtKhoap.Size = new System.Drawing.Size(240, 30);
+            this.txtKhoap.TabIndex = 16;
+            // 
+            // Khoa
+            // 
+            this.Khoa.AutoSize = true;
+            this.Khoa.Location = new System.Drawing.Point(36, 174);
+            this.Khoa.Name = "Khoa";
+            this.Khoa.Size = new System.Drawing.Size(59, 25);
+            this.Khoa.TabIndex = 17;
+            this.Khoa.Text = "Khoa";
             // 
             // AddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 605);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.AddNew);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -242,5 +286,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button AddNew;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label Khoa;
+        private System.Windows.Forms.TextBox txtKhoap;
     }
 }

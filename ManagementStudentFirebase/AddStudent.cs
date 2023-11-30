@@ -16,7 +16,7 @@ namespace ManagementStudentFirebase
         public AddStudent()
         {
             InitializeComponent(); 
-            txtHoTenp.Height = 50; // Đặt chiều cao là 50 (ví dụ)
+          
 
         }
        
@@ -27,6 +27,10 @@ namespace ManagementStudentFirebase
         public string TxtDiaChiPValue
         {
             get { return txtDiaChip.Text; }
+        }
+        public string TxtKhoaPValue
+        {
+            get { return txtKhoap.Text; }
         }
         public string TxtLopPValue
         {
@@ -45,6 +49,18 @@ namespace ManagementStudentFirebase
             get { return cboGioiTinhp.Text; }
         }
 
+        private void time1_tick(object sender, EventArgs e)
+        {
+            if (progressBar1.Value < progressBar1.Maximum)
+            {
+                progressBar1.PerformStep();
+            }
+            else
+            {
+                timer1.Stop(); // Stop the timer when the progress reaches 100
+                this.DialogResult = DialogResult.OK;
+            }
+        }
         private void AddNew_Click(object sender, EventArgs e)
         {
             if (txtHoTenp.Text == "")
@@ -62,10 +78,23 @@ namespace ManagementStudentFirebase
                 MessageBox.Show("Vui lòng nhập địa chỉ của học sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDiaChip.Focus();
             }
+            else if (txtKhoap.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập khoa của học sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtKhoap.Focus();
+            }
             else
             {
-                this.DialogResult = DialogResult.OK;
+                progressBar1.Value = progressBar1.Minimum;
+                timer1.Start();
+                
             }
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,6 +29,7 @@ namespace ManagementStudentFirebase
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnXoaTatCa = new System.Windows.Forms.Button();
             this.btnLayThongTin = new System.Windows.Forms.Button();
@@ -43,8 +44,11 @@ namespace ManagementStudentFirebase
             this.xuatDSHS = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtKhoa = new System.Windows.Forms.TextBox();
+            this.labelK = new System.Windows.Forms.Label();
             this.cboGioiTinh = new System.Windows.Forms.ComboBox();
             this.dtpickerNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -59,6 +63,23 @@ namespace ManagementStudentFirebase
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip8 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip9 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip10 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip11 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip12 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip13 = new System.Windows.Forms.ToolTip(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDSHS)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -72,12 +93,12 @@ namespace ManagementStudentFirebase
             this.btnXoaTatCa.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnXoaTatCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaTatCa.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnXoaTatCa.Location = new System.Drawing.Point(270, 149);
-            this.btnXoaTatCa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnXoaTatCa.Location = new System.Drawing.Point(180, 97);
             this.btnXoaTatCa.Name = "btnXoaTatCa";
-            this.btnXoaTatCa.Size = new System.Drawing.Size(162, 54);
+            this.btnXoaTatCa.Size = new System.Drawing.Size(108, 35);
             this.btnXoaTatCa.TabIndex = 6;
             this.btnXoaTatCa.Text = "Xóa tất cả";
+            this.toolTip9.SetToolTip(this.btnXoaTatCa, "Xoá tất cả thông tin");
             this.btnXoaTatCa.UseVisualStyleBackColor = false;
             this.btnXoaTatCa.Click += new System.EventHandler(this.btnXoaTatCa_Click);
             // 
@@ -87,12 +108,12 @@ namespace ManagementStudentFirebase
             this.btnLayThongTin.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnLayThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLayThongTin.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnLayThongTin.Location = new System.Drawing.Point(270, 68);
-            this.btnLayThongTin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLayThongTin.Location = new System.Drawing.Point(180, 44);
             this.btnLayThongTin.Name = "btnLayThongTin";
-            this.btnLayThongTin.Size = new System.Drawing.Size(162, 54);
+            this.btnLayThongTin.Size = new System.Drawing.Size(108, 35);
             this.btnLayThongTin.TabIndex = 2;
             this.btnLayThongTin.Text = "Lấy danh sách";
+            this.toolTip8.SetToolTip(this.btnLayThongTin, "Lấy danh sách học sinh");
             this.btnLayThongTin.UseVisualStyleBackColor = false;
             this.btnLayThongTin.Click += new System.EventHandler(this.btnLayThongTin_Click);
             // 
@@ -102,12 +123,12 @@ namespace ManagementStudentFirebase
             this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnSua.Location = new System.Drawing.Point(40, 149);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSua.Location = new System.Drawing.Point(27, 97);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(165, 54);
+            this.btnSua.Size = new System.Drawing.Size(110, 35);
             this.btnSua.TabIndex = 1;
             this.btnSua.Text = "Sửa";
+            this.toolTip9.SetToolTip(this.btnSua, "Sửa thông tin học sinh");
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -117,12 +138,12 @@ namespace ManagementStudentFirebase
             this.btnThemMoi.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnThemMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemMoi.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnThemMoi.Location = new System.Drawing.Point(40, 68);
-            this.btnThemMoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnThemMoi.Location = new System.Drawing.Point(27, 44);
             this.btnThemMoi.Name = "btnThemMoi";
-            this.btnThemMoi.Size = new System.Drawing.Size(165, 54);
+            this.btnThemMoi.Size = new System.Drawing.Size(110, 35);
             this.btnThemMoi.TabIndex = 0;
             this.btnThemMoi.Text = "Thêm mới";
+            this.toolTip7.SetToolTip(this.btnThemMoi, "Thêm mới thông tin học sinh");
             this.btnThemMoi.UseVisualStyleBackColor = false;
             this.btnThemMoi.Click += new System.EventHandler(this.btnThemMoi_Click);
             // 
@@ -134,11 +155,9 @@ namespace ManagementStudentFirebase
             this.groupBox3.Controls.Add(this.txtTongHS);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(546, 138);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox3.Location = new System.Drawing.Point(364, 90);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(1176, 835);
+            this.groupBox3.Size = new System.Drawing.Size(784, 605);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách học sinh";
@@ -147,21 +166,21 @@ namespace ManagementStudentFirebase
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(736, 745);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(488, 556);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(145, 25);
+            this.label12.Size = new System.Drawing.Size(98, 16);
             this.label12.TabIndex = 18;
-            this.label12.Text = "Lọc theo mã số";
+            this.label12.Text = "Lọc Danh Sách";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // txtLocDS
             // 
             this.txtLocDS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocDS.Location = new System.Drawing.Point(916, 740);
-            this.txtLocDS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLocDS.Location = new System.Drawing.Point(606, 553);
             this.txtLocDS.Name = "txtLocDS";
-            this.txtLocDS.Size = new System.Drawing.Size(240, 30);
+            this.txtLocDS.Size = new System.Drawing.Size(161, 22);
             this.txtLocDS.TabIndex = 15;
+            this.toolTip9.SetToolTip(this.txtLocDS, "Bạn có thể lọc theo MS,  Lớp hoặc Khoa");
             this.txtLocDS.TextChanged += new System.EventHandler(this.txtLocDS_TextChanged);
             // 
             // dtgDSHS
@@ -180,35 +199,33 @@ namespace ManagementStudentFirebase
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgDSHS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgDSHS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDSHS.Location = new System.Drawing.Point(9, 54);
-            this.dtgDSHS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtgDSHS.Location = new System.Drawing.Point(0, 21);
             this.dtgDSHS.Name = "dtgDSHS";
             this.dtgDSHS.ReadOnly = true;
             this.dtgDSHS.RowHeadersWidth = 62;
-            this.dtgDSHS.Size = new System.Drawing.Size(1149, 642);
+            this.dtgDSHS.Size = new System.Drawing.Size(766, 507);
             this.dtgDSHS.TabIndex = 17;
             this.dtgDSHS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDSHS_CellContentClick);
             // 
             // txtTongHS
             // 
             this.txtTongHS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHS.Location = new System.Drawing.Point(86, 740);
-            this.txtTongHS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTongHS.Location = new System.Drawing.Point(52, 553);
             this.txtTongHS.Name = "txtTongHS";
             this.txtTongHS.ReadOnly = true;
-            this.txtTongHS.Size = new System.Drawing.Size(88, 30);
+            this.txtTongHS.Size = new System.Drawing.Size(60, 22);
             this.txtTongHS.TabIndex = 16;
             this.txtTongHS.Text = "0";
             this.txtTongHS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip9.SetToolTip(this.txtTongHS, "Tổng học sinh trong danh sách");
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 745);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(6, 556);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 25);
+            this.label11.Size = new System.Drawing.Size(39, 16);
             this.label11.TabIndex = 16;
             this.label11.Text = "Tổng";
             // 
@@ -218,12 +235,12 @@ namespace ManagementStudentFirebase
             this.xuatDSHS.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.xuatDSHS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xuatDSHS.ForeColor = System.Drawing.SystemColors.Window;
-            this.xuatDSHS.Location = new System.Drawing.Point(270, 232);
-            this.xuatDSHS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.xuatDSHS.Location = new System.Drawing.Point(180, 151);
             this.xuatDSHS.Name = "xuatDSHS";
-            this.xuatDSHS.Size = new System.Drawing.Size(162, 54);
+            this.xuatDSHS.Size = new System.Drawing.Size(108, 35);
             this.xuatDSHS.TabIndex = 16;
             this.xuatDSHS.Text = "Xuất ra excel";
+            this.toolTip9.SetToolTip(this.xuatDSHS, "Xuất dữ liệu ra File");
             this.xuatDSHS.UseVisualStyleBackColor = false;
             this.xuatDSHS.Click += new System.EventHandler(this.xuatDSHS_Click);
             // 
@@ -233,17 +250,18 @@ namespace ManagementStudentFirebase
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnReset.Location = new System.Drawing.Point(40, 232);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReset.Location = new System.Drawing.Point(27, 151);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(165, 54);
+            this.btnReset.Size = new System.Drawing.Size(110, 35);
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset";
+            this.toolTip9.SetToolTip(this.btnReset, "Reset các thông tin đã nhập");
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.btnXoaTatCa);
             this.groupBox2.Controls.Add(this.btnReset);
             this.groupBox2.Controls.Add(this.btnLayThongTin);
@@ -251,28 +269,34 @@ namespace ManagementStudentFirebase
             this.groupBox2.Controls.Add(this.btnSua);
             this.groupBox2.Controls.Add(this.btnThemMoi);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(18, 668);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(12, 456);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(484, 306);
+            this.groupBox2.Size = new System.Drawing.Size(323, 239);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chức năng";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(67, 201);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(184, 23);
+            this.progressBar1.TabIndex = 17;
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(706, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(471, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(360, 68);
+            this.label1.Size = new System.Drawing.Size(240, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "Quản lý học sinh";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtKhoa);
+            this.groupBox1.Controls.Add(this.labelK);
             this.groupBox1.Controls.Add(this.cboGioiTinh);
             this.groupBox1.Controls.Add(this.dtpickerNgaySinh);
             this.groupBox1.Controls.Add(this.txtDiaChi);
@@ -286,14 +310,31 @@ namespace ManagementStudentFirebase
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(18, 138);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(12, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(484, 520);
+            this.groupBox1.Size = new System.Drawing.Size(323, 332);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
+            // 
+            // txtKhoa
+            // 
+            this.txtKhoa.Location = new System.Drawing.Point(127, 111);
+            this.txtKhoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKhoa.Name = "txtKhoa";
+            this.txtKhoa.Size = new System.Drawing.Size(159, 22);
+            this.txtKhoa.TabIndex = 19;
+            // 
+            // labelK
+            // 
+            this.labelK.AutoSize = true;
+            this.labelK.Location = new System.Drawing.Point(23, 114);
+            this.labelK.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelK.Name = "labelK";
+            this.labelK.Size = new System.Drawing.Size(38, 16);
+            this.labelK.TabIndex = 18;
+            this.labelK.Text = "Khoa";
+            this.labelK.UseMnemonic = false;
             // 
             // cboGioiTinh
             // 
@@ -301,67 +342,68 @@ namespace ManagementStudentFirebase
             this.cboGioiTinh.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.cboGioiTinh.Location = new System.Drawing.Point(190, 382);
-            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboGioiTinh.Location = new System.Drawing.Point(124, 243);
             this.cboGioiTinh.Name = "cboGioiTinh";
-            this.cboGioiTinh.Size = new System.Drawing.Size(240, 33);
+            this.cboGioiTinh.Size = new System.Drawing.Size(161, 24);
             this.cboGioiTinh.TabIndex = 15;
+            this.toolTip5.SetToolTip(this.cboGioiTinh, "Chọn giới tính");
             // 
             // dtpickerNgaySinh
             // 
             this.dtpickerNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpickerNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpickerNgaySinh.Location = new System.Drawing.Point(190, 300);
-            this.dtpickerNgaySinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpickerNgaySinh.Location = new System.Drawing.Point(124, 190);
             this.dtpickerNgaySinh.Name = "dtpickerNgaySinh";
-            this.dtpickerNgaySinh.Size = new System.Drawing.Size(240, 30);
+            this.dtpickerNgaySinh.Size = new System.Drawing.Size(161, 22);
             this.dtpickerNgaySinh.TabIndex = 5;
+            this.toolTip4.SetToolTip(this.dtpickerNgaySinh, "Chọn ngày tháng năm sinh");
             // 
             // txtDiaChi
             // 
             this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Location = new System.Drawing.Point(190, 454);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDiaChi.Location = new System.Drawing.Point(124, 290);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(240, 30);
+            this.txtDiaChi.Size = new System.Drawing.Size(161, 22);
             this.txtDiaChi.TabIndex = 7;
+            this.toolTip6.SetToolTip(this.txtDiaChi, "Nhập địa chỉ ở đây!");
             // 
             // txtLop
             // 
             this.txtLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLop.Location = new System.Drawing.Point(190, 223);
-            this.txtLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLop.Location = new System.Drawing.Point(127, 145);
             this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(240, 30);
+            this.txtLop.Size = new System.Drawing.Size(161, 22);
             this.txtLop.TabIndex = 4;
+            this.toolTip3.SetToolTip(this.txtLop, "Nhập Lớp tại đây!");
+            this.txtLop.TextChanged += new System.EventHandler(this.txtLop_TextChanged_1);
             // 
             // txtHoTen
             // 
             this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTen.Location = new System.Drawing.Point(190, 146);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtHoTen.Location = new System.Drawing.Point(127, 73);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(240, 30);
+            this.txtHoTen.Size = new System.Drawing.Size(161, 22);
             this.txtHoTen.TabIndex = 2;
+            this.toolTip2.SetToolTip(this.txtHoTen, "Nhập Họ và tên tại đây!");
             // 
             // txtMaHS
             // 
             this.txtMaHS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaHS.Location = new System.Drawing.Point(190, 54);
-            this.txtMaHS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMaHS.Location = new System.Drawing.Point(127, 35);
             this.txtMaHS.Name = "txtMaHS";
             this.txtMaHS.ReadOnly = true;
-            this.txtMaHS.Size = new System.Drawing.Size(240, 30);
+            this.txtMaHS.Size = new System.Drawing.Size(161, 22);
             this.txtMaHS.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtMaHS, "Nhập Mã học sinh tại đây!");
+            this.txtMaHS.TextChanged += new System.EventHandler(this.txtMaHS_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(36, 62);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(24, 40);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 25);
+            this.label7.Size = new System.Drawing.Size(78, 16);
             this.label7.TabIndex = 5;
             this.label7.Text = "Mã học sinh";
             // 
@@ -369,10 +411,9 @@ namespace ManagementStudentFirebase
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(36, 386);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(21, 246);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 25);
+            this.label6.Size = new System.Drawing.Size(54, 16);
             this.label6.TabIndex = 4;
             this.label6.Text = "Giới tính";
             // 
@@ -380,10 +421,9 @@ namespace ManagementStudentFirebase
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(36, 463);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(21, 296);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 25);
+            this.label5.Size = new System.Drawing.Size(47, 16);
             this.label5.TabIndex = 3;
             this.label5.Text = "Địa chỉ";
             // 
@@ -391,10 +431,9 @@ namespace ManagementStudentFirebase
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(36, 308);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(21, 195);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 25);
+            this.label4.Size = new System.Drawing.Size(67, 16);
             this.label4.TabIndex = 2;
             this.label4.Text = "Ngày sinh";
             // 
@@ -402,10 +441,9 @@ namespace ManagementStudentFirebase
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, 231);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(24, 150);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 25);
+            this.label3.Size = new System.Drawing.Size(30, 16);
             this.label3.TabIndex = 1;
             this.label3.Text = "Lớp";
             // 
@@ -413,34 +451,47 @@ namespace ManagementStudentFirebase
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 154);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(24, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 25);
+            this.label2.Size = new System.Drawing.Size(64, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Họ và tên";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(18, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1704, 100);
+            this.panel1.Size = new System.Drawing.Size(1136, 65);
             this.panel1.TabIndex = 7;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.time1_tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.time2_tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Tick += new System.EventHandler(this.time3_tick);
+            // 
+            // timer4
+            // 
+            this.timer4.Tick += new System.EventHandler(this.time4_tick);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1797, 1009);
+            this.ClientSize = new System.Drawing.Size(1172, 716);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "ManagementStudentFirebase";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -486,6 +537,26 @@ namespace ManagementStudentFirebase
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip6;
+        private System.Windows.Forms.ToolTip toolTip9;
+        private System.Windows.Forms.ToolTip toolTip8;
+        private System.Windows.Forms.ToolTip toolTip7;
+        private System.Windows.Forms.ToolTip toolTip10;
+        private System.Windows.Forms.ToolTip toolTip11;
+        private System.Windows.Forms.ToolTip toolTip12;
+        private System.Windows.Forms.ToolTip toolTip13;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.TextBox txtKhoa;
+        private System.Windows.Forms.Label labelK;
     }
 }
 

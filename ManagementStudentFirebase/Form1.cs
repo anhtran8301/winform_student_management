@@ -38,6 +38,7 @@ namespace ManagementStudentFirebase
             //thêm headercolumn cho datagridview
             dt.Columns.Add("Mã");
             dt.Columns.Add("Họ và tên");
+            dt.Columns.Add("Khoa");
             dt.Columns.Add("Lớp");
             dt.Columns.Add("Ngày sinh");
             dt.Columns.Add("Giới tính");
@@ -45,6 +46,7 @@ namespace ManagementStudentFirebase
 
             dtgDSHS.DataSource = dt;
         }
+        
 
         private async void export()
         {
@@ -76,6 +78,7 @@ namespace ManagementStudentFirebase
 
                     row["Mã"] = obj2.MSHS;
                     row["Họ và tên"] = obj2.HoTen;
+                    row["Khoa"] = obj2.Khoa;
                     row["Lớp"] = obj2.Lop;
                     row["Ngày sinh"] = obj2.NgaySinh;
                     row["Địa chỉ"] = obj2.DiaChi;
@@ -111,6 +114,7 @@ namespace ManagementStudentFirebase
         {
             txtMaHS.DataBindings.Add(new Binding("Text", dtgDSHS.DataSource, "Mã", true, DataSourceUpdateMode.Never));
             txtHoTen.DataBindings.Add(new Binding("Text", dtgDSHS.DataSource, "Họ và tên", true, DataSourceUpdateMode.Never));
+            txtKhoa.DataBindings.Add(new Binding("Text", dtgDSHS.DataSource, "Khoa", true, DataSourceUpdateMode.Never));
             txtLop.DataBindings.Add(new Binding("Text", dtgDSHS.DataSource, "Lớp", true, DataSourceUpdateMode.Never));
             txtDiaChi.DataBindings.Add(new Binding("Text", dtgDSHS.DataSource, "Địa chỉ", true, DataSourceUpdateMode.Never));
             dtpickerNgaySinh.DataBindings.Add(new Binding("Value", dtgDSHS.DataSource, "Ngày Sinh", true, DataSourceUpdateMode.Never));
@@ -121,6 +125,7 @@ namespace ManagementStudentFirebase
         {
             txtHoTen.Text = "";
             txtMaHS.Text = "";
+            txtKhoa.Text = "";
             txtLop.Text = "";
             txtDiaChi.Text = "";
             cboGioiTinh.Text = "Nam";
@@ -129,6 +134,7 @@ namespace ManagementStudentFirebase
 
         private async void AddStudent()
         {
+            string TxtkhoapValueFromAddStudent =string.Empty;
             string TxthotenpValueFromAddStudent = string.Empty;
             string TxtDiaChiPValueFromAddStudent = string.Empty;
             string TxtLopPValueFromAddStudent = string.Empty;
@@ -142,6 +148,7 @@ namespace ManagementStudentFirebase
                 {
                     // Lấy thông tin từ pop-up form sau khi người dùng nhập đủ
                     TxthotenpValueFromAddStudent = add.TxtHotenPValue;
+                    TxtkhoapValueFromAddStudent=add.TxtKhoaPValue;
                     TxtDateValueFromAddStudent = add.TxtDateValue;
                     TxtDiaChiPValueFromAddStudent = add.TxtDiaChiPValue;
                     TxtMaHSPValueFromAddStudent = add.TxtMaHSPValue;
@@ -159,6 +166,7 @@ namespace ManagementStudentFirebase
                         {
                             MSHS = (Convert.ToInt32(get.cnt) + 1).ToString(),
                             HoTen = TxthotenpValueFromAddStudent,
+                            Khoa=TxtkhoapValueFromAddStudent,
                             Lop = TxtLopPValueFromAddStudent,
                             NgaySinh = TxtDateValueFromAddStudent.ToString(),
                             DiaChi = TxtDiaChiPValueFromAddStudent,
@@ -213,6 +221,7 @@ namespace ManagementStudentFirebase
                     {
                         MSHS = txtMaHS.Text,
                         HoTen = txtHoTen.Text,
+                        Khoa= txtKhoa.Text,
                         Lop = txtLop.Text,
                         NgaySinh = dtpickerNgaySinh.Text.ToString(),
                         DiaChi = txtDiaChi.Text,
@@ -321,15 +330,42 @@ namespace ManagementStudentFirebase
         {
            
         }
-
+        private void time1_tick(object sender, EventArgs e)
+        {
+            if (progressBar1.Value < progressBar1.Maximum)
+            {
+                progressBar1.PerformStep();
+            }
+            else
+            {
+                timer1.Stop(); // Stop the timer when the progress reaches 100
+                export();
+                progressBar1.Value = progressBar1.Minimum;
+            }
+        }
         private void btnLayThongTin_Click(object sender, EventArgs e)
         {
-            export();
+            progressBar1.Value = progressBar1.Minimum;
+            timer1.Start();
         }
 
+        private void time2_tick(object sender, EventArgs e) 
+        {
+            if (progressBar1.Value < progressBar1.Maximum)
+            {
+                progressBar1.PerformStep();
+            }
+            else
+            {
+                timer2.Stop(); // Stop the timer when the progress reaches 100
+                Reset();
+                progressBar1.Value = progressBar1.Minimum;
+            }
+        }
         private void btnReset_Click(object sender, EventArgs e)
         {
-            Reset();
+            progressBar1.Value = progressBar1.Minimum;
+            timer2.Start();
         }
 
         private void btnThemMoi_Click(object sender, EventArgs e)
@@ -337,20 +373,59 @@ namespace ManagementStudentFirebase
             AddStudent();
         }
 
+
+        private void time3_tick(object sender, EventArgs e)
+        {
+            if (progressBar1.Value < progressBar1.Maximum)
+            {
+                progressBar1.PerformStep();
+            }
+            else
+            {
+                timer3.Stop(); // Stop the timer when the progress reaches 100
+                EditStudent();
+                progressBar1.Value = progressBar1.Minimum;
+            }
+        }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            EditStudent();
+            progressBar1.Value = progressBar1.Minimum;
+            timer3.Start();
+        }
+        private void time4_tick(object sender, EventArgs e)
+        {
+            if (progressBar1.Value < progressBar1.Maximum)
+            {
+                progressBar1.PerformStep();
+            }
+            else
+            {
+                timer4.Stop(); // Stop the timer when the progress reaches 100
+                DeleteStudent();
+                progressBar1.Value = progressBar1.Minimum;
+            }
         }
 
         private void btnXoaTatCa_Click(object sender, EventArgs e)
         {
-            DeleteStudent();
+            progressBar1.Value = progressBar1.Minimum;
+            timer4.Start();
         }
 
         private void txtLocDS_TextChanged(object sender, EventArgs e)
         {
-            string rowFilter = string.Format("{0} like '{1}'", "Mã", "*" + txtLocDS.Text + "*");
-            (dtgDSHS.DataSource as DataTable).DefaultView.RowFilter = rowFilter;
+            if (int.TryParse(txtLocDS.Text, out int maFilter))
+            {
+                // Nếu là số, lọc theo trường "Mã"
+                string rowFilter = string.Format("{0} = {1}", "Mã", maFilter);
+                (dtgDSHS.DataSource as DataTable).DefaultView.RowFilter = rowFilter;
+            }
+            else
+            {
+                // Nếu không phải số, lọc theo trường "Lớp"
+                string rowFilter = string.Format("{0} like '{1}' OR {2} like '{3}'", "Lớp", "*" + txtLocDS.Text + "*", "Khoa", "*" + txtLocDS.Text + "*");
+                (dtgDSHS.DataSource as DataTable).DefaultView.RowFilter = rowFilter;
+            }
             Total();
         }
 
@@ -372,6 +447,31 @@ namespace ManagementStudentFirebase
         private void txtLop_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtMaHS_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLop_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Close();
         }
     }
 }
